@@ -1,0 +1,9 @@
+__pycache__
+
+out.aux
+out.log
+out.pdf
+out.tex
+
+images/*
+form_responses.csv
