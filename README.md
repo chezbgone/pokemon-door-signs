@@ -23,7 +23,11 @@ so a big effort was put into producing helpful error messages.
     we'll manually deal with them later
   - this might involve emailing people for clarifications on their image
 - rerun `python main.py form_responses.csv out.tex`
-- run `xelatex out.tex` (takes around 8 minutes for ~200 signs)
+- [optional] compress images: (requires imagemagick)
+  run `mogrify -resize 1000\> *.png` inside the images directory,
+  the `1000\>` means shrink larger images to 1000px
+- run `xelatex out.tex`
+  (takes around 8 minutes for ~200 signs, 3 minutes if images compressed)
   **read the warnings**!!!
 - look through `out.pdf` and clean up things in the following list
   (in order of decreasing priority):
@@ -51,7 +55,7 @@ so a big effort was put into producing helpful error messages.
 - cut and distribute
 
 ### Possible extensions
-- Compress images for faster TeX compilation
+- auto-fix backward quotes
 - Support more Unicode
 
 #### Changing the font
