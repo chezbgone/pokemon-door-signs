@@ -25,11 +25,11 @@ so a big effort was put into producing helpful error messages.
   - this might involve emailing people for clarifications on their image
 - rerun `python main.py form_responses.csv out.tex`
 - [optional] compress images: (requires imagemagick)
-  run `mogrify -resize 1000\> *.png` inside the images directory,
+  run `mogrify -resize 1000\> *.png` inside the images directory.
   the `1000\>` means shrink larger images to 1000px
 - run `xelatex out.tex`
   (takes around 8 minutes for ~200 signs, 3 minutes if images compressed)
-  **read the warnings**!!!
+  **read the warnings**!!! look at the debugging section for common errors.
 - look through `out.pdf` and clean up things in the following list
   (in order of decreasing priority):
   - manually add images to images folder,
@@ -39,8 +39,8 @@ so a big effort was put into producing helpful error messages.
     related to special years or courses
   - special notes like "Course [do not include]"
   - people use a lot of weird unicode.
-    delete the corresponding lines in the tex file and make those manually
-    in google docs or something.
+    you can try to debug the TeX (see debugging section), or delete the corresponding lines in the tex file
+    and make those manually in google docs or something.
     use a font similar to DejaVu Sans for consistency
   - text too long and overflows to next page
     (try making the image smaller,
@@ -54,6 +54,27 @@ so a big effort was put into producing helpful error messages.
   - remember the manually made ones
 - write room numbers on back of paper for organization
 - cut and distribute
+
+### Debugging
+#### Some emojis don't work
+Some unicode characters have both text and picture presentations, specified by an additional Unicode codepoint. For example, (U+1f171) in text is '🅱' (U+1f171) and in emoji is '🅱️' (U+1f171 U+fe0f). However, the `twemojis` TeX package does not accept the emoji version `\texttwemoji{1f171-fe0f}`, and requires the single codepoint`\texttwemoji{1f171}`. The fix is to manually remove the `-fe0f` part of the generated TeX.
+
+A list of emojis that this breaks for is [here](http://unicode.org/emoji/charts/emoji-variants.html).
+This can probably be automated, but I don't know if all `-fe0f`s can be safely removed.
+
+Here is an upstream issue: https://gitlab.com/rossel.jost/latex-twemojis/-/issues/6.
+
+#### Other exotic fonts
+Sometimes people use glyphs from a language not supported by DejuVu Sans.
+You can try installing a font that does support it and manually select the replacements.
+It's probably easier to make these in Google Docs, but in case you want to try the following code is an example that has worked:
+```tex
+\usepackage{newunicodechar}
+\newfontfamily{\tibetanfont}{Noto Serif Tibetan}[Scale=2.5]
+\DeclareTextFontCommand{\texttibetan}{\tibetanfont}
+\newunicodechar{༼}{\texttibetan{༼}}
+\newunicodechar{༽}{\texttibetan{༽}}
+```
 
 ### Possible extensions
 - auto-fix backward quotes
