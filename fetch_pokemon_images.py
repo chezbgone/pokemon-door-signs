@@ -65,4 +65,4 @@ def fetch_pokemon_images(
       thread.join()
   else:
     for id in pokemon_ids:
-      fetch_pokemon_image(id)
+      fetch_pokemon_image(id, use_cache=use_cache)
