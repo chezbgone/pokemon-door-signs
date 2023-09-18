@@ -9,6 +9,7 @@ def parse_csv_line(line: dict[str, str]) -> Doorsign:
     pokemon_id=line['Pokémon ID number'],
     course=line['Major'],
     text=line['Description of yourself/flavor text for door sign'],
+    room=line['Room number'],
   )
 
 def load_data(filename: str) -> list[Doorsign]:

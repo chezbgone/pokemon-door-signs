@@ -8,3 +8,4 @@ class Doorsign:
   pokemon_id: str
   course: str
   text: str
+  room: str

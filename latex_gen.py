@@ -52,9 +52,9 @@ def generate_doorsign_latex(
     image = default_image
   return template.substitute({
     'image': image,
-    'name': latexify(doorsign.display_name),
-    'class': latexify(doorsign.year),
-    'course': latexify(doorsign.course),
+    'name': convert_emojis(latexify(doorsign.display_name)),
+    'class': convert_emojis(latexify(doorsign.year)),
+    'course': convert_emojis(latexify(doorsign.course)),
     'text': convert_emojis(latexify(doorsign.text)),
   })
 
