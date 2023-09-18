@@ -12,6 +12,7 @@ so a big effort was put into producing helpful error messages.
 - Python (pip: requests, beautifulsoup4, emoji)
 - XeLaTeX
 - DejaVu Sans font
+- Noto Sans font
 
 ### Instructions for making door signs
 - clone repository

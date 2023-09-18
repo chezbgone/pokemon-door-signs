@@ -4,6 +4,9 @@
 \usepackage{graphicx}
 \usepackage{twemojis}
 
+\usepackage{xeCJK}
+\setCJKmainfont[Scale=2.5]{Noto Sans CJK TC}
+
 \setmainfont{DejaVu Sans}[Scale=2.5]
 \pagestyle{empty}
 \linespread{3.5}
